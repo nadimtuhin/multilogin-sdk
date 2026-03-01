@@ -1,6 +1,6 @@
 {
   "name": "multilogin-x-sdk",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "TypeScript SDK for Multilogin X API - generated from Postman collection",
   "type": "module",
   "main": "./src/MultiloginClient.ts",
