@@ -1,5 +1,6 @@
 import { Resource } from './Resource';
 import { MultiloginResponse } from '../config/options';
+import { BrowserStartedResponse, BrowserStoppedResponse, ProfileStatus, ProfileAllStatusResponse, VersionResponse } from '../types';
 
 export interface StartBrowserProfileOptions {
   automationType?: 'selenium' | 'puppeteer' | 'playwright';
@@ -14,7 +15,7 @@ export class Launcher extends Resource {
     folderId: string,
     profileId: string,
     options?: StartBrowserProfileOptions
-  ): Promise<MultiloginResponse> {
+  ): Promise<MultiloginResponse<BrowserStartedResponse>> {
     const params = new URLSearchParams();
     if (options?.automationType) {
       params.set('automation_type', options.automationType);
@@ -23,15 +24,15 @@ export class Launcher extends Resource {
       params.set('headless_mode', String(options.headlessMode));
     }
 
-    const query = params.toString() ? `?${params.toString()}` : '';
-    return this.get(`/api/v2/profile/f/${folderId}/p/${profileId}/start${query}`);
+    const query = params.toString() ? '?' + params.toString() : '';
+    return this.get<BrowserStartedResponse>('/api/v2/profile/f/' + folderId + '/p/' + profileId + '/start' + query);
   }
 
   /**
    * Stop a browser profile
    */
-  async stopBrowserProfile(profileId: string): Promise<MultiloginResponse> {
-    return this.get(`/api/v1/profile/stop/${profileId}`);
+  async stopBrowserProfile(profileId: string): Promise<MultiloginResponse<BrowserStoppedResponse>> {
+    return this.get<BrowserStoppedResponse>('/api/v1/profile/stop/' + profileId);
   }
 
   /**
@@ -44,28 +45,28 @@ export class Launcher extends Resource {
   /**
    * Get profile status
    */
-  async getProfileStatus(profileId: string): Promise<MultiloginResponse> {
-    return this.get(`/api/v1/profile/status/${profileId}`);
+  async getProfileStatus(profileId: string): Promise<MultiloginResponse<ProfileStatus>> {
+    return this.get<ProfileStatus>('/api/v1/profile/status/' + profileId);
   }
 
   /**
    * Get all profiles status
    */
-  async getAllProfilesStatus(): Promise<MultiloginResponse> {
-    return this.get('/api/v1/profile/status/all');
+  async getAllProfilesStatus(): Promise<MultiloginResponse<ProfileAllStatusResponse>> {
+    return this.get<ProfileAllStatusResponse>('/api/v1/profile/status/all');
   }
 
   /**
    * Get launcher version
    */
-  async getVersion(): Promise<MultiloginResponse> {
-    return this.get('/api/v1/version');
+  async getVersion(): Promise<MultiloginResponse<VersionResponse>> {
+    return this.get<VersionResponse>('/api/v1/version');
   }
 
   /**
    * Start quick profile (V3)
    */
-  async startQuickProfileV3(options?: Record<string, any>): Promise<MultiloginResponse> {
-    return this.post('/api/v1/profile/quick/create', options);
+  async startQuickProfileV3(options?: Record<string, any>): Promise<MultiloginResponse<BrowserStartedResponse>> {
+    return this.post<BrowserStartedResponse>('/api/v1/profile/quick/create', options);
   }
 }

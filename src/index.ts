@@ -14,3 +14,6 @@ export { Proxy } from './resources/Proxy';
 export { CookieManagement } from './resources/CookieManagement';
 export { ScriptRunner } from './resources/ScriptRunner';
 export { ProfileAccess } from './resources/ProfileAccess';
+
+// API Types
+export * from './types';
