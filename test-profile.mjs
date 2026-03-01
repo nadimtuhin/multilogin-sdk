@@ -2,28 +2,25 @@ import 'dotenv/config';
 import { MultiloginClient } from './src/index.js';
 
 const token = process.env.MULTILOGIN_TOKEN;
-const workspaceId = process.env.MULTILOGIN_WORKSPACE_ID;
+const baseUrl = process.env.MULTILOGIN_BASE_URL || 'https://api.multilogin.com';
 
 if (!token) {
   console.error('Error: MULTILOGIN_TOKEN must be set in .env');
-  console.log('Run: bun run login.mjs to get a token');
+  console.log('Run: bun run login.mjs to get token');
   process.exit(1);
 }
 
 async function main() {
-  console.log('🧪 Multilogin Profile Test');
-  console.log('========================\n');
+  console.log('🧪 Multilogin SDK Profile Test');
+  console.log('============================\n');
 
-  // Create client
-  const client = new MultiloginClient({
-    token,
-    baseUrl: 'https://api.multilogin.com',
-  });
+  const client = new MultiloginClient({ baseUrl, token });
 
   try {
     // 1. Get workspaces
-    console.log('1️⃣ Getting workspaces...');
+    console.log('1️⃣  Getting workspaces...');
     const workspacesResult = await client.profileAccess.getWorkspaces();
+    console.log('   Response:', JSON.stringify(workspacesResult.status, null, 2));
     
     if (!workspacesResult.success) {
       console.error('❌ Failed to get workspaces:', workspacesResult.error?.message);
@@ -31,44 +28,45 @@ async function main() {
     }
     
     const workspaces = workspacesResult.data;
-    console.log(`   ✅ Found ${workspaces.length} workspace(s)`);
+    console.log('   ✅ Got', workspaces?.length || 0, 'workspaces');
     
-    // Use provided workspace ID or first workspace
-    const wsId = workspaceId || (workspaces[0]?.id || workspaces[0]?.workspaceId);
-    console.log(`   📁 Using workspace: ${wsId}\n`);
+    if (!workspaces || workspaces.length === 0) {
+      console.error('❌ No workspaces found');
+      process.exit(1);
+    }
+
+    const workspaceId = workspaces[0].id;
+    console.log('   📁 Using workspace:', workspaces[0].name, '(' + workspaceId + ')');
 
     // 2. Get profiles
-    console.log('2️⃣ Getting profiles...');
+    console.log('\n2️⃣  Getting profiles...');
     const profilesResult = await client.profiles.list();
+    console.log('   Response:', JSON.stringify(profilesResult.status, null, 2));
     
     if (!profilesResult.success) {
       console.error('❌ Failed to get profiles:', profilesResult.error?.message);
       process.exit(1);
     }
     
-    const profiles = profilesResult.data || [];
-    console.log(`   ✅ Found ${profiles.length} profile(s)`);
+    const profiles = profilesResult.data;
+    console.log('   ✅ Got', profiles?.length || 0, 'profiles');
     
-    if (profiles.length === 0) {
-      console.log('   ⚠️  No profiles found. Create one in Multilogin app first.');
+    if (!profiles || profiles.length === 0) {
+      console.error('❌ No profiles found. Create one in Multilogin X dashboard first.');
       process.exit(1);
     }
-    
+
     // Use first profile
-    const profile = profiles[0];
-    console.log(`   📋 Using profile: ${profile.name} (${profile.id || profile.profileId})\n`);
-    
-    const profileId = profile.id || profile.profileId;
-    const folderId = profile.folderId || 'default';
+    const profileId = profiles[0].id;
+    const folderId = profiles[0].folder_id || 'default';
+    console.log('   📋 Using profile:', profiles[0].name, '(' + profileId + ')');
 
     // 3. Start profile
-    console.log('3️⃣ Starting profile...');
-    const startResult = await client.launcher.startBrowserProfile(
-      folderId,
-      profileId,
-      { automationType: 'selenium' }
-    );
-    
+    console.log('\n3️⃣  Starting profile...');
+    const startResult = await client.launcher.startBrowserProfile(folderId, profileId, {
+      automationType: 'playwright',
+      headlessMode: false,
+    });
     console.log('   Response:', JSON.stringify(startResult.status, null, 2));
     
     if (!startResult.success) {
@@ -76,17 +74,17 @@ async function main() {
       process.exit(1);
     }
     
-    console.log('   ✅ Profile started!\n');
+    console.log('   ✅ Profile started!');
+    console.log('   🌐 Browser should open');
 
     // 4. Wait 10 seconds
-    console.log('4️⃣ Waiting 10 seconds...');
+    console.log('\n4️⃣  Waiting 10 seconds...');
     await new Promise(resolve => setTimeout(resolve, 10000));
-    console.log('   ✅ Wait complete!\n');
+    console.log('   ⏰ Done waiting');
 
     // 5. Stop profile
-    console.log('5️⃣ Stopping profile...');
+    console.log('\n5️⃣  Stopping profile...');
     const stopResult = await client.launcher.stopBrowserProfile(profileId);
-    
     console.log('   Response:', JSON.stringify(stopResult.status, null, 2));
     
     if (!stopResult.success) {
@@ -94,18 +92,13 @@ async function main() {
       process.exit(1);
     }
     
-    console.log('   ✅ Profile stopped!\n');
+    console.log('   ✅ Profile stopped!');
 
-    // 6. Check status
-    console.log('6️⃣ Checking final status...');
-    const statusResult = await client.launcher.getProfileStatus(profileId);
-    console.log('   Status:', JSON.stringify(statusResult.status, null, 2));
-
-    console.log('========================');
+    console.log('\n============================');
     console.log('✅ All tests passed!');
 
   } catch (error) {
-    console.error('\n❌ Error:', error.message);
+    console.error('\n❌ Test failed:', error.message);
     process.exit(1);
   }
 }
