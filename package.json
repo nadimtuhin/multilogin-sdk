@@ -1,0 +1,35 @@
+{
+  "name": "multilogin-x-sdk",
+  "version": "1.0.0",
+  "description": "TypeScript SDK for Multilogin X API - generated from Postman collection",
+  "type": "module",
+  "main": "./src/MultiloginClient.ts",
+  "types": "./src/MultiloginClient.ts",
+  "exports": {
+    ".": {
+      "types": "./src/MultiloginClient.ts",
+      "default": "./src/MultiloginClient.ts"
+    }
+  },
+  "files": [
+    "src",
+    "README.md"
+  ],
+  "keywords": [
+    "multilogin",
+    "sdk",
+    "api",
+    "typescript",
+    "browser-profiles",
+    "automation"
+  ],
+  "author": "",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "devDependencies": {
+    "@sirhc77/postman-sdk-gen": "^0.2.0",
+    "typescript": "^5.0.0"
+  }
+}
