@@ -1,4 +1,5 @@
 import 'dotenv/config';
+import crypto from 'crypto';
 import fetch from 'node-fetch';
 
 const email = process.env.MULTILOGIN_EMAIL;
@@ -24,15 +25,16 @@ async function login() {
       },
       body: JSON.stringify({
         email,
-        password,
+        password: crypto.createHash('md5').update(password).digest('hex'),
       }),
     });
+
 
     const data = await response.json();
     
     console.log('Response:', JSON.stringify(data, null, 2));
     
-    if (data.status?.error_code === 'OK' && data.data?.token) {
+    if ((data.status?.error_code === 'OK' || data.status?.error_code === '') && data.data?.token) {
       console.log('\n✅ Login successful!');
       console.log('\nAdd this to your .env file:');
       console.log(`MULTILOGIN_TOKEN=${data.data.token}`);
