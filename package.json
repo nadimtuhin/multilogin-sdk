@@ -1,20 +1,24 @@
 {
   "name": "multilogin-x-sdk",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "TypeScript SDK for Multilogin X API - generated from Postman collection",
   "type": "module",
-  "main": "./src/MultiloginClient.ts",
-  "types": "./src/MultiloginClient.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./src/MultiloginClient.ts",
-      "default": "./src/MultiloginClient.ts"
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
     }
   },
   "files": [
-    "src",
+    "dist",
     "README.md"
   ],
+  "scripts": {
+    "build": "tsup src/index.ts --outDir dist --format esm",
+    "build:types": "tsup src/index.ts --outDir dist --format esm --dts"
+  },
   "keywords": [
     "multilogin",
     "sdk",
@@ -30,6 +34,11 @@
   },
   "devDependencies": {
     "@sirhc77/postman-sdk-gen": "^0.2.0",
+    "@types/node": "^25.3.3",
+    "tsup": "^8.5.1",
     "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "dotenv": "^17.3.1"
   }
 }

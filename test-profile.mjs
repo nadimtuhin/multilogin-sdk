@@ -1,5 +1,5 @@
 import 'dotenv/config';
-import { MultiloginClient } from './src/index.js';
+import { MultiloginClient } from './dist/index.js';
 
 const token = process.env.MULTILOGIN_TOKEN;
 const baseUrl = process.env.MULTILOGIN_BASE_URL || 'https://api.multilogin.com';
