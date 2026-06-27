@@ -2566,7 +2566,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"email\": \"foo@bar.com\",\n  \"password\": \"251baacac3f0a6cb27c8653298d977ed\"\n}",
+                  "raw": "{\n  \"email\": \"foo@bar.com\",\n  \"password\": \"YOUR_MD5_HASHED_PASSWORD\"\n}",
                   "options": {
                     "raw": {
                       "headerFamily": "json",
@@ -2678,7 +2678,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"email\": \"foo@bar.com\",\n  \"refresh_token\": \"87d1428be3571bed\",\n  \"workspace_id\": \"7420be58-d040-46a0-9513-071a9ffa8924\"\n}",
+                  "raw": "{\n  \"email\": \"foo@bar.com\",\n  \"refresh_token\": \"0000000000000000\",\n  \"workspace_id\": \"7420be58-d040-46a0-9513-071a9ffa8924\"\n}",
                   "options": {
                     "raw": {
                       "headerFamily": "json",
@@ -2710,7 +2710,7 @@
                 }
               ],
               "cookie": [],
-              "body": "{\n    \"status\": {\n        \"error_code\": \"\",\n        \"http_code\": 200,\n        \"message\": \"Token successfully updated\"\n    },\n    \"data\": {\n        \"refresh_token\": \"87d1428be3571bed\",\n        \"token\": \"your JWT token\"\n    }\n}"
+              "body": "{\n    \"status\": {\n        \"error_code\": \"\",\n        \"http_code\": 200,\n        \"message\": \"Token successfully updated\"\n    },\n    \"data\": {\n        \"refresh_token\": \"0000000000000000\",\n        \"token\": \"your JWT token\"\n    }\n}"
             }
           ]
         },
@@ -2887,7 +2887,7 @@
                 ],
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"new_password\": \"251baacac3f0a6cb27c8653298d977ed\",\n  \"password\": \"251baacac3f0a6cb27c8653298d977cb\"\n}",
+                  "raw": "{\n  \"new_password\": \"YOUR_MD5_HASHED_PASSWORD\",\n  \"password\": \"YOUR_MD5_HASHED_PASSWORD\"\n}",
                   "options": {
                     "raw": {
                       "headerFamily": "json",
@@ -7005,7 +7005,7 @@
               },
               {
                 "key": "Authorization",
-                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJicGRzLmJ1Y2tldCI6Im1seC1icGRzLTEiLCJlbWFpbCI6InJvYmVydC5hbGV4YW5kcnUrNjI5QG11bHRpbG9naW4uY29tIiwiZXhwIjoxNjg4MDUwNTQ0LCJwcm9kdWN0SUQiOiJxYSIsInNoYXJkSUQiOiJjYmUxMzgwMC1iYmFmLTRjOGYtODBiMy0xOTdmODk2Mzk0ZjIiLCJ1c2VySUQiOiI3NDMwY2NjNy03MjNmLTRkYzgtOWJhZC1kNDJlNTcwYTFlOWEiLCJ2ZXJpZmllZCI6dHJ1ZSwid29ya3NwYWNlSUQiOiI1ODhjM2UxNy1lNGRlLTRhOWMtODBjOS02YTY2ZGQ4MzFjNTUiLCJ3b3Jrc3BhY2VSb2xlIjoib3duZXIifQ.ENk1kVL_qTmMtyx9d4iXwwS1lCiWjiWd3N2gQfWFk80",
+                "value": "Bearer YOUR_JWT_TOKEN_HERE",
                 "type": "text",
                 "disabled": true
               }
@@ -7063,7 +7063,7 @@
                   },
                   {
                     "key": "Authorization",
-                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJicGRzLmJ1Y2tldCI6Im1seC1icGRzLTEiLCJlbWFpbCI6InJvYmVydC5hbGV4YW5kcnUrNjI5QG11bHRpbG9naW4uY29tIiwiZXhwIjoxNjg4MDUwNTQ0LCJwcm9kdWN0SUQiOiJxYSIsInNoYXJkSUQiOiJjYmUxMzgwMC1iYmFmLTRjOGYtODBiMy0xOTdmODk2Mzk0ZjIiLCJ1c2VySUQiOiI3NDMwY2NjNy03MjNmLTRkYzgtOWJhZC1kNDJlNTcwYTFlOWEiLCJ2ZXJpZmllZCI6dHJ1ZSwid29ya3NwYWNlSUQiOiI1ODhjM2UxNy1lNGRlLTRhOWMtODBjOS02YTY2ZGQ4MzFjNTUiLCJ3b3Jrc3BhY2VSb2xlIjoib3duZXIifQ.ENk1kVL_qTmMtyx9d4iXwwS1lCiWjiWd3N2gQfWFk80",
+                    "value": "Bearer YOUR_JWT_TOKEN_HERE",
                     "type": "text",
                     "disabled": true
                   }
@@ -7135,7 +7135,7 @@
               },
               {
                 "key": "Authorization",
-                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJicGRzLmJ1Y2tldCI6Im1seC1icGRzLTEiLCJlbWFpbCI6InJvYmVydC5hbGV4YW5kcnUrNjI5QG11bHRpbG9naW4uY29tIiwiZXhwIjoxNjg4MDUwNTQ0LCJwcm9kdWN0SUQiOiJxYSIsInNoYXJkSUQiOiJjYmUxMzgwMC1iYmFmLTRjOGYtODBiMy0xOTdmODk2Mzk0ZjIiLCJ1c2VySUQiOiI3NDMwY2NjNy03MjNmLTRkYzgtOWJhZC1kNDJlNTcwYTFlOWEiLCJ2ZXJpZmllZCI6dHJ1ZSwid29ya3NwYWNlSUQiOiI1ODhjM2UxNy1lNGRlLTRhOWMtODBjOS02YTY2ZGQ4MzFjNTUiLCJ3b3Jrc3BhY2VSb2xlIjoib3duZXIifQ.ENk1kVL_qTmMtyx9d4iXwwS1lCiWjiWd3N2gQfWFk80",
+                "value": "Bearer YOUR_JWT_TOKEN_HERE",
                 "type": "text",
                 "disabled": true
               }
@@ -7195,7 +7195,7 @@
                   },
                   {
                     "key": "Authorization",
-                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJicGRzLmJ1Y2tldCI6Im1seC1icGRzLTEiLCJlbWFpbCI6InJvYmVydC5hbGV4YW5kcnUrNjI5QG11bHRpbG9naW4uY29tIiwiZXhwIjoxNjg4MDUwNTQ0LCJwcm9kdWN0SUQiOiJxYSIsInNoYXJkSUQiOiJjYmUxMzgwMC1iYmFmLTRjOGYtODBiMy0xOTdmODk2Mzk0ZjIiLCJ1c2VySUQiOiI3NDMwY2NjNy03MjNmLTRkYzgtOWJhZC1kNDJlNTcwYTFlOWEiLCJ2ZXJpZmllZCI6dHJ1ZSwid29ya3NwYWNlSUQiOiI1ODhjM2UxNy1lNGRlLTRhOWMtODBjOS02YTY2ZGQ4MzFjNTUiLCJ3b3Jrc3BhY2VSb2xlIjoib3duZXIifQ.ENk1kVL_qTmMtyx9d4iXwwS1lCiWjiWd3N2gQfWFk80",
+                    "value": "Bearer YOUR_JWT_TOKEN_HERE",
                     "type": "text",
                     "disabled": true
                   }
@@ -7265,7 +7265,7 @@
               },
               {
                 "key": "Authorization",
-                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJicGRzLmJ1Y2tldCI6Im1seC1icGRzLTEiLCJlbWFpbCI6InJvYmVydC5hbGV4YW5kcnUrNjI5QG11bHRpbG9naW4uY29tIiwiZXhwIjoxNjg4MDUwNTQ0LCJwcm9kdWN0SUQiOiJxYSIsInNoYXJkSUQiOiJjYmUxMzgwMC1iYmFmLTRjOGYtODBiMy0xOTdmODk2Mzk0ZjIiLCJ1c2VySUQiOiI3NDMwY2NjNy03MjNmLTRkYzgtOWJhZC1kNDJlNTcwYTFlOWEiLCJ2ZXJpZmllZCI6dHJ1ZSwid29ya3NwYWNlSUQiOiI1ODhjM2UxNy1lNGRlLTRhOWMtODBjOS02YTY2ZGQ4MzFjNTUiLCJ3b3Jrc3BhY2VSb2xlIjoib3duZXIifQ.ENk1kVL_qTmMtyx9d4iXwwS1lCiWjiWd3N2gQfWFk80",
+                "value": "Bearer YOUR_JWT_TOKEN_HERE",
                 "type": "text",
                 "disabled": true
               }
@@ -7310,7 +7310,7 @@
                   },
                   {
                     "key": "Authorization",
-                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJicGRzLmJ1Y2tldCI6Im1seC1icGRzLTEiLCJlbWFpbCI6InJvYmVydC5hbGV4YW5kcnUrNjI5QG11bHRpbG9naW4uY29tIiwiZXhwIjoxNjg4MDUwNTQ0LCJwcm9kdWN0SUQiOiJxYSIsInNoYXJkSUQiOiJjYmUxMzgwMC1iYmFmLTRjOGYtODBiMy0xOTdmODk2Mzk0ZjIiLCJ1c2VySUQiOiI3NDMwY2NjNy03MjNmLTRkYzgtOWJhZC1kNDJlNTcwYTFlOWEiLCJ2ZXJpZmllZCI6dHJ1ZSwid29ya3NwYWNlSUQiOiI1ODhjM2UxNy1lNGRlLTRhOWMtODBjOS02YTY2ZGQ4MzFjNTUiLCJ3b3Jrc3BhY2VSb2xlIjoib3duZXIifQ.ENk1kVL_qTmMtyx9d4iXwwS1lCiWjiWd3N2gQfWFk80",
+                    "value": "Bearer YOUR_JWT_TOKEN_HERE",
                     "type": "text",
                     "disabled": true
                   }
@@ -7383,7 +7383,7 @@
               },
               {
                 "key": "Authorization",
-                "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJicGRzLmJ1Y2tldCI6Im1seC1icGRzLTEiLCJlbWFpbCI6InJvYmVydC5hbGV4YW5kcnUrNjI5QG11bHRpbG9naW4uY29tIiwiZXhwIjoxNjg4MDUwNTQ0LCJwcm9kdWN0SUQiOiJxYSIsInNoYXJkSUQiOiJjYmUxMzgwMC1iYmFmLTRjOGYtODBiMy0xOTdmODk2Mzk0ZjIiLCJ1c2VySUQiOiI3NDMwY2NjNy03MjNmLTRkYzgtOWJhZC1kNDJlNTcwYTFlOWEiLCJ2ZXJpZmllZCI6dHJ1ZSwid29ya3NwYWNlSUQiOiI1ODhjM2UxNy1lNGRlLTRhOWMtODBjOS02YTY2ZGQ4MzFjNTUiLCJ3b3Jrc3BhY2VSb2xlIjoib3duZXIifQ.ENk1kVL_qTmMtyx9d4iXwwS1lCiWjiWd3N2gQfWFk80",
+                "value": "Bearer YOUR_JWT_TOKEN_HERE",
                 "type": "text",
                 "disabled": true
               }
@@ -7418,7 +7418,7 @@
                   },
                   {
                     "key": "Authorization",
-                    "value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJicGRzLmJ1Y2tldCI6Im1seC1icGRzLTEiLCJlbWFpbCI6InJvYmVydC5hbGV4YW5kcnUrNjI5QG11bHRpbG9naW4uY29tIiwiZXhwIjoxNjg4MDUwNTQ0LCJwcm9kdWN0SUQiOiJxYSIsInNoYXJkSUQiOiJjYmUxMzgwMC1iYmFmLTRjOGYtODBiMy0xOTdmODk2Mzk0ZjIiLCJ1c2VySUQiOiI3NDMwY2NjNy03MjNmLTRkYzgtOWJhZC1kNDJlNTcwYTFlOWEiLCJ2ZXJpZmllZCI6dHJ1ZSwid29ya3NwYWNlSUQiOiI1ODhjM2UxNy1lNGRlLTRhOWMtODBjOS02YTY2ZGQ4MzFjNTUiLCJ3b3Jrc3BhY2VSb2xlIjoib3duZXIifQ.ENk1kVL_qTmMtyx9d4iXwwS1lCiWjiWd3N2gQfWFk80",
+                    "value": "Bearer YOUR_JWT_TOKEN_HERE",
                     "type": "text",
                     "disabled": true
                   }

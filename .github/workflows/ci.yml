@@ -12,11 +12,29 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [18, 20, 22]
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
         with:
-          node-version: 20
+          node-version: ${{ matrix.node-version }}
           cache: npm
-      - run: npm ci
-      - run: npm run build
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
+
+      - name: Check for secrets in source
+        run: |
+          # Fail if any real JWT-shaped token appears in source files
+          if grep -rE 'eyJ[A-Za-z0-9_-]{40,}\.[A-Za-z0-9_-]{40,}\.' src/ 2>/dev/null; then
+            echo "ERROR: possible JWT token found in src/"
+            exit 1
+          fi
+          echo "No secrets detected in src/"
