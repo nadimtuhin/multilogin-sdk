@@ -36,5 +36,8 @@ Thumbs.db
 coverage/
 .nyc_output/
 
+# Internal planning (not for public consumption)
+.sisyphus/
+
 # Misc
 *.log

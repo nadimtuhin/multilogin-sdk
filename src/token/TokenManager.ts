@@ -35,7 +35,7 @@ export class TokenManager {
         body: JSON.stringify({ refresh_token: this.refreshToken }),
       });
       
-      const data = await response.json();
+      const data: { status?: { error_code?: string; message?: string; http_code?: number }; data?: { token?: string; refresh_token?: string } } = await response.json();
       
       if (data.status?.error_code === 'OK' && data.data?.token) {
         this.token = data.data.token;

@@ -20,7 +20,7 @@ export class ProfileManagement extends Resource {
   /**
    * Get a specific profile
    */
-  async get(profileId: string): Promise<MultiloginResponse<BrowserProfile>> {
+  async getById(profileId: string): Promise<MultiloginResponse<BrowserProfile>> {
     return this.get<BrowserProfile>('/api/v1/profile/p/' + profileId);
   }
 
@@ -41,7 +41,7 @@ export class ProfileManagement extends Resource {
   /**
    * Delete a profile
    */
-  async delete(profileId: string): Promise<MultiloginResponse<ProfileDeletedResponse>> {
+  async deleteById(profileId: string): Promise<MultiloginResponse<ProfileDeletedResponse>> {
     return this.delete<ProfileDeletedResponse>('/api/v1/profile/p/' + profileId);
   }
 
