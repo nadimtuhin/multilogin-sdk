@@ -49,7 +49,7 @@ node login.mjs
 
 ## Authentication
 
-Pass a Bearer token via the `token` option or set `MULTILOGIN_TOKEN` in your environment. See the [Multilogin X API docs](https://documenter.getpostman.com/view/28533318/2s946h9Cv9) for how to obtain one.
+Pass a Bearer token via the `token` option or set `MULTILOGIN_TOKEN` in your environment. See the [Multilogin X API docs](https://documenter.getpostman.com/view/28533318/2s946h9Cv9) for token acquisition.
 
 ## Contributing
 
